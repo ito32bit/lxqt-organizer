@@ -1,3 +1,8 @@
 build
 lxqt-organizer.kdev4
 *.pro
+*.snap
+parts/
+prime/
+stage/
+*-snap_i386*.txt
