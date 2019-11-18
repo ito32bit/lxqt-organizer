@@ -113,6 +113,15 @@ https://salsa.debian.org/lxqt-team/lxqt-organizer
 
 Arch AUR will come soon.
 
+### Snap packages (unofficial)
+
+Building status: [![Snap Status](https://build.snapcraft.io/badge/ito32bit/lxqt-organizer-snap-packaging.svg)](https://build.snapcraft.io/user/ito32bit/lxqt-organizer-snap-packaging)  
+
+Latest release: [![lxqt-organizer-snap](https://snapcraft.io//lxqt-organizer-snap/badge.svg)](https://snapcraft.io/lxqt-organizer-snap)
+[![lxqt-organizer-snap](https://snapcraft.io//lxqt-organizer-snap/trending.svg?name=0)](https://snapcraft.io/lxqt-organizer-snap)
+
+Install on your Linux distribution:  
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/lxqt-organizer-snap)
 
 ### Translation (Weblate)
 Not available yet - will come soon, when we implemented the translation system.
