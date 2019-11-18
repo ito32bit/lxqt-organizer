@@ -65,3 +65,9 @@ INCLUDE_DIRECTORIES( ${Qt5Xml_INCLUDE_DIRS} )
 
 add_executable ( lxqt-organizer ${lxqt-organizer_SRCS} ${UIS} ${RSCS} ${TRS} ${MOCS} )
 target_link_libraries ( lxqt-organizer  Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Sql Qt5::DBus Qt5::Svg Qt5::Xml )
+
+INSTALL(TARGETS
+    lxqt-organizer
+    RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+    COMPONENT Runtime
+)
