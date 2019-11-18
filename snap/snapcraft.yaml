@@ -1,0 +1,115 @@
+name: lxqt-organizer-snap
+base: core18
+title: LXQt-Organizer-snap (unofficial)
+summary: Personal Information Manager
+description: |
+  Personal Information Manager  
+  This is the unofficial snap packaging.  
+  Upstream: https://github.com/lxqt/lxqt-organizer  
+
+grade: stable
+confinement: strict
+
+plugs:
+  liblxqt-snap:
+    interface: content
+    target: $SNAP/liblxqt-snap
+    default-provider: liblxqt-snap
+
+layout:
+  /usr/share:
+    bind: $SNAP/usr/share
+
+adopt-info: lxqt-organizer-snap
+apps:
+  lxqt-organizer-snap:
+    adapter: full
+    command: usr/bin/lxqt-organizer
+    command-chain:
+      - bin/desktop-launch
+    environment:
+      QT_STYLE_OVERRIDE: Fusion
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/liblxqt-snap/lib:$SNAP/liblxqt-snap/usr/lib/$SNAPCRAFT_ARCH_TRIPLET
+    desktop: usr/share/applications/lxqt-organizer.desktop
+    plugs:
+      - unity7
+      - x11
+      - wayland
+      - opengl
+      - desktop
+      - desktop-legacy
+      - home
+
+parts:
+  lxqt-organizer-snap:
+    #source: https://github.com/lxqt/lxqt-organizer.git
+    source: https://github.com/ito32bit/lxqt-organizer-snap-packaging.git
+    source-type: git
+    plugin: cmake
+    configflags:
+      - -DCMAKE_INSTALL_PREFIX=/usr
+    after:
+      - desktop-qt5
+    override-pull: |
+      snapcraftctl pull
+      ver=`git describe --tags --always`
+      cd $SNAPCRAFT_PROJECT_DIR
+      ver=$ver-`git log --oneline -n 1|awk '{print $1}'` || ver=$ver`date +%y%m%d`
+      echo "Set version: $ver"
+      snapcraftctl set-version $ver
+#
+    build-snaps:
+      - lxqt-build-tools-snap
+      - liblxqt-snap
+      - libqtxdg-snap
+    build-packages:
+      - g++
+      - libqt5core5a
+      - libqt5dbus5
+      - libqt5gui5
+      - libqt5widgets5
+      - libkf5windowsystem-dev
+      - libqt5svg5-dev
+      - libqt5x11extras5-dev
+      - libx11-dev
+      - qttools5-dev
+      - qttools5-dev-tools
+      - libqt5sql5
+
+    override-stage: |
+      snapcraftctl stage
+      sed -e '/^Name/s/$/ - snap/' -i usr/share/applications/lxqt-organizer.desktop
+#
+    stage-packages:
+      - libqt5core5a
+      - libqt5dbus5
+      - libqt5gui5
+      - libqt5svg5
+      - libqt5widgets5
+      - libqt5x11extras5
+      - libx11-6
+      - libqt5sql5-sqlite
+      #- qttranslations5-l10n
+
+  desktop-qt5:
+      source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+      source-subdir: qt
+      plugin: make
+      make-parameters: ["FLAVOR=qt5"]
+      build-packages:
+        - qtbase5-dev
+        - dpkg-dev
+      stage-packages:
+        - libxkbcommon0
+        - ttf-ubuntu-font-family
+        - dmz-cursor-theme
+        - light-themes
+        - adwaita-icon-theme
+        - gnome-themes-standard
+        - shared-mime-info
+        - libqt5gui5
+        - libgdk-pixbuf2.0-0
+        - libgtk2.0-0
+        - libqt5svg5 # for loading icon themes which are svg
+        - try: [appmenu-qt5] # not available on core18
+        - locales-all
