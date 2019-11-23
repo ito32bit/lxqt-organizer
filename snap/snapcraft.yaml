@@ -3,7 +3,7 @@ base: core18
 title: LXQt-Organizer-snap (unofficial)
 summary: Personal Information Manager
 description: |
-  Personal Information Manager  
+  LXQt Organizer is a lightweight organizer for personal information management.  
   This is the unofficial snap packaging.  
   Upstream: https://github.com/lxqt/lxqt-organizer  
 
@@ -15,10 +15,6 @@ plugs:
     interface: content
     target: $SNAP/liblxqt-snap
     default-provider: liblxqt-snap
-
-layout:
-  /usr/share:
-    bind: $SNAP/usr/share
 
 adopt-info: lxqt-organizer-snap
 apps:
