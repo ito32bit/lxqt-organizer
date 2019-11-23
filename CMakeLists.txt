@@ -42,7 +42,7 @@ add_definitions("-DLXQT_ORGANIZER_VERSION=\"${LXQT_ORGANIZER_VERSION}\"")
 # Translations **********************************
 # include(LXQtTranslate)
 
-add_subdirectory(lxqt-organizer)
+add_subdirectory(src)
 add_subdirectory(scripts)
 
 INSTALL(TARGETS
