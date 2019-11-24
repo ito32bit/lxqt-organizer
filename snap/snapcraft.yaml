@@ -87,6 +87,8 @@ parts:
       - libx11-6
       - libqt5sql5-sqlite
       #- qttranslations5-l10n
+      - fcitx-frontend-qt5
+      - uim-qt5
 
   desktop-qt5:
       source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
