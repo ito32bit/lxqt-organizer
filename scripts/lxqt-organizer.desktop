@@ -33,5 +33,5 @@ Actions=new-window;
 Name=New Window
 Name[de]=Neues Fenster
 Name[ja_JP]=新しいウィンドウ
-Exec=/usr/local/lxqt-organizer --win
+Exec=lxqt-organizer --win
 
