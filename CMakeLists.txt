@@ -23,6 +23,8 @@ find_package(Qt5Gui ${QT_MINIMUM_VERSION} REQUIRED)
 find_package(Qt5LinguistTools ${QT_MINIMUM_VERSION} REQUIRED)
 find_package(Qt5Widgets ${QT_MINIMUM_VERSION} REQUIRED)
 find_package(Qt5Sql ${QT_MINIMUM_VERSION} REQUIRED)
+find_package(Qt5Svg ${QT_MINIMUM_VERSION} REQUIRED)
+find_package(Qt5Xml ${QT_MINIMUM_VERSION} REQUIRED)
 find_package(lxqt ${LXQT_MINIMUM_VERSION} REQUIRED)
 message(STATUS "Building with Qt${Qt5Core_VERSION}")
 
